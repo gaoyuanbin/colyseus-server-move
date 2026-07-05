@@ -1,8 +1,17 @@
+const http = require("http");
+const express = require("express");
 const { Server } = require("@colyseus/core");
 const { WebSocketTransport } = require("@colyseus/ws-transport");
 const { HelloRoom } = require("./HelloRoom");
 
-const server = new Server({ transport: new WebSocketTransport() });
+const app = express();
+app.get("/", (req, res) => res.send("OK"));
+
+const httpServer = http.createServer(app);
+
+const server = new Server({
+  transport: new WebSocketTransport({ server: httpServer }),
+});
 server.define("hello_room", HelloRoom);
 
 const port = Number(process.env.PORT) || 2567;
