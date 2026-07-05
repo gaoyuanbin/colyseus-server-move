@@ -15,5 +15,5 @@ const server = new Server({
 server.define("hello_room", HelloRoom);
 
 const port = Number(process.env.PORT) || 2567;
-server.listen(port, "0.0.0.0");
+server.listen(port);
 console.log(`Colyseus server running on port ${port}`);
