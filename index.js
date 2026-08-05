@@ -4,6 +4,7 @@ const { Server, matchMaker } = require("@colyseus/core");
 const { WebSocketTransport } = require("@colyseus/ws-transport");
 const { HelloRoom } = require("./HelloRoom");
 const { ArenaRoom } = require("./ArenaRoom");
+const { TagRoom } = require("./TagRoom");
 
 const app = express();
 app.get("/", (req, res) => res.send("OK"));
@@ -27,6 +28,7 @@ const server = new Server({
 });
 server.define("hello_room", HelloRoom);
 server.define("arena_room", ArenaRoom);
+server.define("tag_room", TagRoom);
 
 const port = Number(process.env.PORT) || 2567;
 server.listen(port);

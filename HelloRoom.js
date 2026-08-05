@@ -25,6 +25,14 @@ class HelloRoom extends Room {
       x: data.x,
       y: data.y,
       }, { except: client });
+
+      // The client only sends "sayHi" once its own message handlers are mounted,
+      // so replying straight to it (instead of relying on others' broadcasts,
+      // which can arrive before those handlers exist) can't be missed.
+      for (const [sessionId, other] of this.players) {
+        if (sessionId === client.sessionId) continue;
+        client.send("playerSaidHi", { sessionId, x: other.x, y: other.y });
+      }
     })
   }
 
