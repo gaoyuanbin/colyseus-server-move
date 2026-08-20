@@ -2,6 +2,7 @@ const { Room } = require("@colyseus/core");
 
 const SPAWN_X = 500;
 const SPAWN_Y = 300;
+const DASH_ENERGY_COST = 15
 
 class HelloRoom extends Room {
   onCreate() {
