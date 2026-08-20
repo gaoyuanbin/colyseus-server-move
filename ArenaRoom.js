@@ -4,10 +4,12 @@ const MAX_HP = 100;
 const ATTACK_DAMAGE = 10;
 const ATTACK_COOLDOWN_MS = 500;
 const ATTACK_RANGE = 60;
+const ATTACK_HEIGHT = 50;
 const ATTACK_ENERGY_COST = 10;
 const SUPER_ATTACK_DAMAGE = 25;
 const SUPER_ATTACK_COOLDOWN_MS = 3000;
 const SUPER_ATTACK_RANGE = 150;
+const SUPER_ATTACK_HEIGHT = 50;
 const SUPER_ATTACK_ENERGY_COST = 25;
 const PLAYER_HALF_SIZE = 25;
 
@@ -40,6 +42,7 @@ class ArenaRoom extends HelloRoom {
       this.resolveAttack(client, attacker, data.direction, {
         damage: ATTACK_DAMAGE,
         range: ATTACK_RANGE,
+        height: ATTACK_HEIGHT,
         hitEvent: "playerAttacked",
       });
     });
@@ -57,6 +60,7 @@ class ArenaRoom extends HelloRoom {
       this.resolveAttack(client, attacker, data.direction, {
         damage: SUPER_ATTACK_DAMAGE,
         range: SUPER_ATTACK_RANGE,
+        height: SUPER_ATTACK_HEIGHT,
         hitEvent: "playerSuperAttacked",
       });
     });
@@ -81,7 +85,7 @@ class ArenaRoom extends HelloRoom {
     }
   }
 
-  resolveAttack(client, attacker, direction, { damage, range, hitEvent }) {
+  resolveAttack(client, attacker, direction, { damage, range, height, hitEvent }) {
     const dir = direction === "left" ? -1 : 1;
     const hitboxX = attacker.x + dir * (range / 2);
 
@@ -91,7 +95,7 @@ class ArenaRoom extends HelloRoom {
       if (sessionId === client.sessionId) continue;
       const dx = Math.abs(target.x - hitboxX);
       const dy = Math.abs(target.y - attacker.y);
-      if (dx <= range / 2 + PLAYER_HALF_SIZE && dy <= PLAYER_HALF_SIZE * 2) {
+      if (dx <= range / 2 + PLAYER_HALF_SIZE && dy <= height / 2 + PLAYER_HALF_SIZE) {
         target.hp -= damage;
 
         if (target.hp <= 0) {
