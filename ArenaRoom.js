@@ -1,16 +1,7 @@
 const { HelloRoom, SPAWN_X, SPAWN_Y } = require("./HelloRoom");
+const { ATTACKS } = require("./attacks");
 
 const MAX_HP = 100;
-const ATTACK_DAMAGE = 10;
-const ATTACK_COOLDOWN_MS = 500;
-const ATTACK_RANGE = 60;
-const ATTACK_HEIGHT = 50;
-const ATTACK_ENERGY_COST = 10;
-const SUPER_ATTACK_DAMAGE = 25;
-const SUPER_ATTACK_COOLDOWN_MS = 3000;
-const SUPER_ATTACK_RANGE = 150;
-const SUPER_ATTACK_HEIGHT = 50;
-const SUPER_ATTACK_ENERGY_COST = 25;
 const PLAYER_HALF_SIZE = 25;
 
 // Ported from PygameFighting's data/game_settings.json ("energy": {"regen_rate": 0.5})
@@ -29,40 +20,24 @@ class ArenaRoom extends HelloRoom {
 
     super.onCreate();
 
+    // Single generic handler: the attack's own stats (damage, range,
+    // cooldown, energy cost) come from ATTACKS[attackId], loaded from
+    // data/attacks/*.json — nothing attack-specific is hardcoded here.
     this.onMessage("attack", (client, data) => {
       const attacker = this.players.get(client.sessionId);
       if (!attacker) return;
 
-      const now = Date.now();
-      if (now - attacker.lastAttack < ATTACK_COOLDOWN_MS) return;
-      if (attacker.energy < ATTACK_ENERGY_COST) return;
-      attacker.lastAttack = now;
-      this.spendEnergy(client, attacker, ATTACK_ENERGY_COST);
-
-      this.resolveAttack(client, attacker, data.direction, {
-        damage: ATTACK_DAMAGE,
-        range: ATTACK_RANGE,
-        height: ATTACK_HEIGHT,
-        hitEvent: "playerAttacked",
-      });
-    });
-
-    this.onMessage("superAttack", (client, data) => {
-      const attacker = this.players.get(client.sessionId);
-      if (!attacker) return;
+      const attack = ATTACKS[data.attackId];
+      if (!attack) return;
 
       const now = Date.now();
-      if (now - attacker.lastAttack < SUPER_ATTACK_COOLDOWN_MS) return;
-      if (attacker.energy < SUPER_ATTACK_ENERGY_COST) return;
-      attacker.lastAttack = now;
-      this.spendEnergy(client, attacker, SUPER_ATTACK_ENERGY_COST);
+      const lastUsed = attacker.lastAttack[attack.id] || 0;
+      if (now - lastUsed < attack.cooldownMs) return;
+      if (attacker.energy < attack.energyCost) return;
+      attacker.lastAttack[attack.id] = now;
+      this.spendEnergy(client, attacker, attack.energyCost);
 
-      this.resolveAttack(client, attacker, data.direction, {
-        damage: SUPER_ATTACK_DAMAGE,
-        range: SUPER_ATTACK_RANGE,
-        height: SUPER_ATTACK_HEIGHT,
-        hitEvent: "playerSuperAttacked",
-      });
+      this.resolveAttack(client, attacker, data.direction, attack);
     });
 
     // Energy is a private resource (only the owning client needs to see it),
@@ -85,18 +60,18 @@ class ArenaRoom extends HelloRoom {
     }
   }
 
-  resolveAttack(client, attacker, direction, { damage, range, height, hitEvent }) {
+  resolveAttack(client, attacker, direction, attack) {
     const dir = direction === "left" ? -1 : 1;
-    const hitboxX = attacker.x + dir * (range / 2);
+    const hitboxX = attacker.x + dir * (attack.range / 2);
 
-    this.broadcast(hitEvent, { sessionId: client.sessionId, direction });
+    this.broadcast("playerAttacked", { sessionId: client.sessionId, attackId: attack.id, direction });
 
     for (const [sessionId, target] of this.players) {
       if (sessionId === client.sessionId) continue;
       const dx = Math.abs(target.x - hitboxX);
       const dy = Math.abs(target.y - attacker.y);
-      if (dx <= range / 2 + PLAYER_HALF_SIZE && dy <= height / 2 + PLAYER_HALF_SIZE) {
-        target.hp -= damage;
+      if (dx <= attack.range / 2 + PLAYER_HALF_SIZE && dy <= attack.height / 2 + PLAYER_HALF_SIZE) {
+        target.hp -= attack.damage;
 
         if (target.hp <= 0) {
           target.hp = MAX_HP;
@@ -115,7 +90,7 @@ class ArenaRoom extends HelloRoom {
     const player = this.players.get(client.sessionId);
     player.hp = MAX_HP;
     player.energy = MAX_ENERGY;
-    player.lastAttack = 0;
+    player.lastAttack = {};
     client.send("imroom", { roomtype: "arena" });
     client.send("energyUpdate", { energy: player.energy });
   }

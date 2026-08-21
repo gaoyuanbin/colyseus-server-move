@@ -1,0 +1,16 @@
+{
+  "id": "attack",
+  "damage": 10,
+  "range": 60,
+  "height": 50,
+  "cooldownMs": 500,
+  "energyCost": 10,
+  "effect": {
+    "width": 40,
+    "height": 50,
+    "offsetFromPlayer": 40,
+    "color": "0xffff00",
+    "alpha": 0.6,
+    "durationMs": 150
+  }
+}

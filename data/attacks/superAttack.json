@@ -1,0 +1,16 @@
+{
+  "id": "superAttack",
+  "damage": 25,
+  "range": 150,
+  "height": 50,
+  "cooldownMs": 3000,
+  "energyCost": 25,
+  "effect": {
+    "width": 150,
+    "height": 70,
+    "offsetFromPlayer": 90,
+    "color": "0xffff22",
+    "alpha": 0.65,
+    "durationMs": 200
+  }
+}
