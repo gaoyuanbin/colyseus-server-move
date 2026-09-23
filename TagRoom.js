@@ -14,8 +14,8 @@ class TagRoom extends HelloRoom {
     this.setSimulationInterval(() => this.checkTags(), CHECK_INTERVAL_MS);
   }
 
-  onJoin(client) {
-    super.onJoin(client);
+  onJoin(client, options) {
+    super.onJoin(client, options);
     const player = this.players.get(client.sessionId);
     player.lastTagged = 0;
 

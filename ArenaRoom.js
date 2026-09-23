@@ -85,8 +85,8 @@ class ArenaRoom extends HelloRoom {
     }
   }
 
-  onJoin(client) {
-    super.onJoin(client);
+  onJoin(client, options) {
+    super.onJoin(client, options);
     const player = this.players.get(client.sessionId);
     player.hp = MAX_HP;
     player.energy = MAX_ENERGY;

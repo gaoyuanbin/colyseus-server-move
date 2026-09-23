@@ -22,9 +22,11 @@ class HelloRoom extends Room {
     });
     this.onMessage("sayHi", (client, data) => {
       console.log("player",client.sessionId, " said hi");
+      const sender = this.players.get(client.sessionId);
       this.broadcast("playerSaidHi", {sessionId: client.sessionId,
       x: data.x,
       y: data.y,
+      character: sender?.character,
       }, { except: client });
 
       // The client only sends "sayHi" once its own message handlers are mounted,
@@ -32,16 +34,20 @@ class HelloRoom extends Room {
       // which can arrive before those handlers exist) can't be missed.
       for (const [sessionId, other] of this.players) {
         if (sessionId === client.sessionId) continue;
-        client.send("playerSaidHi", { sessionId, x: other.x, y: other.y });
+        client.send("playerSaidHi", { sessionId, x: other.x, y: other.y, character: other.character });
       }
     })
   }
 
-  onJoin(client) {
+  onJoin(client, options) {
     console.log("Client joined:", client.sessionId);
-    this.players.set(client.sessionId, { x: SPAWN_X, y: SPAWN_Y });
+    // `character` is just a cosmetic id (e.g. "red") picked in the client's menu -
+    // relayed as-is, never interpreted server-side, so any unrecognized value is
+    // harmless (the client falls back to a default color for it).
+    const character = options?.character;
+    this.players.set(client.sessionId, { x: SPAWN_X, y: SPAWN_Y, character });
     client.send("imroom", { roomtype: "lobby" });
-    this.broadcast("playerJoined", { sessionId: client.sessionId }, { except: client });
+    this.broadcast("playerJoined", { sessionId: client.sessionId, character }, { except: client });
   }
 
   onLeave(client) {
