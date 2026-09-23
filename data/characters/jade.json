@@ -1,0 +1,58 @@
+{
+  "id": "jade",
+  "name": "Jade",
+  "color": "0x44dd88",
+  "speed": 3.0,
+  "maxHp": 100,
+  "maxEnergy": 130,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "damage": 10,
+      "range": 60,
+      "height": 50,
+      "cooldownMs": 500,
+      "energyCost": 9,
+      "effect": {
+        "width": 40,
+        "height": 50,
+        "offsetFromPlayer": 40,
+        "color": "0x66ffaa",
+        "alpha": 0.6,
+        "durationMs": 150
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "damage": 25,
+      "range": 150,
+      "height": 70,
+      "cooldownMs": 3000,
+      "energyCost": 25,
+      "effect": {
+        "width": 150,
+        "height": 70,
+        "offsetFromPlayer": 90,
+        "color": "0x88ffcc",
+        "alpha": 0.65,
+        "durationMs": 220
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "damage": 8,
+      "range": 70,
+      "height": 50,
+      "cooldownMs": 400,
+      "energyCost": 0,
+      "effect": {
+        "width": 50,
+        "height": 50,
+        "offsetFromPlayer": 25,
+        "color": "0x66ffaa",
+        "alpha": 0.5,
+        "durationMs": 250
+      }
+    }
+  }
+}

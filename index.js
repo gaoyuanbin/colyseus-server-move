@@ -5,16 +5,17 @@ const { WebSocketTransport } = require("@colyseus/ws-transport");
 const { HelloRoom } = require("./HelloRoom");
 const { ArenaRoom } = require("./ArenaRoom");
 const { TagRoom } = require("./TagRoom");
-const { ATTACKS } = require("./attacks");
+const { CHARACTERS } = require("./characters");
 
 const app = express();
 app.get("/", (req, res) => res.send("OK"));
 
-// Serves the data-driven attack definitions (data/attacks/*.json) so the
-// client never hardcodes damage/cooldown/energy/visuals of its own.
-app.get("/attacks", (req, res) => {
+// Serves the data-driven character definitions (data/characters/*.json),
+// including each character's own attack/superAttack/dash movesets, so the
+// client never hardcodes stats or visuals of its own.
+app.get("/characters", (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
-  res.json(ATTACKS);
+  res.json(CHARACTERS);
 });
 
 // Lets clients list open arenas so players can pick one to join.

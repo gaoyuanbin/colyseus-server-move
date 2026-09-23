@@ -1,4 +1,5 @@
 const { Room } = require("@colyseus/core");
+const { CHARACTERS, DEFAULT_CHARACTER_ID } = require("./characters");
 
 const SPAWN_X = 500;
 const SPAWN_Y = 300;
@@ -41,10 +42,11 @@ class HelloRoom extends Room {
 
   onJoin(client, options) {
     console.log("Client joined:", client.sessionId);
-    // `character` is just a cosmetic id (e.g. "red") picked in the client's menu -
-    // relayed as-is, never interpreted server-side, so any unrecognized value is
-    // harmless (the client falls back to a default color for it).
-    const character = options?.character;
+    // `character` picks which data/characters/*.json moveset this player uses.
+    // Validated against the known ids (not just relayed) since ArenaRoom trusts
+    // it to look up hp/energy caps and attack stats - an unrecognized id falls
+    // back to the default character instead of leaving the player without one.
+    const character = CHARACTERS[options?.character] ? options.character : DEFAULT_CHARACTER_ID;
     this.players.set(client.sessionId, { x: SPAWN_X, y: SPAWN_Y, character });
     client.send("imroom", { roomtype: "lobby" });
     this.broadcast("playerJoined", { sessionId: client.sessionId, character }, { except: client });

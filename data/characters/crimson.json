@@ -1,0 +1,58 @@
+{
+  "id": "crimson",
+  "name": "Crimson",
+  "color": "0xff4444",
+  "speed": 3.5,
+  "maxHp": 90,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "damage": 14,
+      "range": 50,
+      "height": 50,
+      "cooldownMs": 400,
+      "energyCost": 10,
+      "effect": {
+        "width": 36,
+        "height": 50,
+        "offsetFromPlayer": 36,
+        "color": "0xff6644",
+        "alpha": 0.6,
+        "durationMs": 150
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "damage": 28,
+      "range": 110,
+      "height": 60,
+      "cooldownMs": 2600,
+      "energyCost": 30,
+      "effect": {
+        "width": 110,
+        "height": 65,
+        "offsetFromPlayer": 70,
+        "color": "0xff8844",
+        "alpha": 0.65,
+        "durationMs": 220
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "damage": 10,
+      "range": 70,
+      "height": 50,
+      "cooldownMs": 400,
+      "energyCost": 0,
+      "effect": {
+        "width": 50,
+        "height": 50,
+        "offsetFromPlayer": 25,
+        "color": "0xff6644",
+        "alpha": 0.5,
+        "durationMs": 250
+      }
+    }
+  }
+}

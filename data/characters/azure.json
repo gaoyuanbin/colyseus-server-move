@@ -1,0 +1,58 @@
+{
+  "id": "azure",
+  "name": "Azure",
+  "color": "0x4488ff",
+  "speed": 2.6,
+  "maxHp": 110,
+  "maxEnergy": 110,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "damage": 9,
+      "range": 75,
+      "height": 45,
+      "cooldownMs": 550,
+      "energyCost": 12,
+      "effect": {
+        "width": 44,
+        "height": 45,
+        "offsetFromPlayer": 44,
+        "color": "0x66aaff",
+        "alpha": 0.6,
+        "durationMs": 150
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "damage": 22,
+      "range": 190,
+      "height": 70,
+      "cooldownMs": 3400,
+      "energyCost": 30,
+      "effect": {
+        "width": 190,
+        "height": 75,
+        "offsetFromPlayer": 110,
+        "color": "0x88ccff",
+        "alpha": 0.65,
+        "durationMs": 220
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "damage": 6,
+      "range": 70,
+      "height": 50,
+      "cooldownMs": 450,
+      "energyCost": 0,
+      "effect": {
+        "width": 50,
+        "height": 50,
+        "offsetFromPlayer": 25,
+        "color": "0x66aaff",
+        "alpha": 0.5,
+        "durationMs": 250
+      }
+    }
+  }
+}

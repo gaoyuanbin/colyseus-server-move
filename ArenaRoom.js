@@ -1,12 +1,11 @@
 const { HelloRoom, SPAWN_X, SPAWN_Y } = require("./HelloRoom");
-const { ATTACKS } = require("./attacks");
+const { CHARACTERS } = require("./characters");
 
-const MAX_HP = 100;
 const PLAYER_HALF_SIZE = 25;
 
 // Ported from PygameFighting's data/game_settings.json ("energy": {"regen_rate": 0.5})
-// at its 60fps tick, i.e. +0.5 energy per frame == +30/sec.
-const MAX_ENERGY = 100;
+// at its 60fps tick, i.e. +0.5 energy per frame == +30/sec. Applies to every
+// character equally - only the cap (player.maxEnergy) varies by character.
 const ENERGY_REGEN_PER_SEC = 30;
 const ENERGY_TICK_MS = 100;
 const ENERGY_PER_TICK = ENERGY_REGEN_PER_SEC * (ENERGY_TICK_MS / 1000);
@@ -21,13 +20,13 @@ class ArenaRoom extends HelloRoom {
     super.onCreate();
 
     // Single generic handler: the attack's own stats (damage, range,
-    // cooldown, energy cost) come from ATTACKS[attackId], loaded from
-    // data/attacks/*.json — nothing attack-specific is hardcoded here.
+    // cooldown, energy cost) come from the attacker's own character
+    // (data/characters/*.json) — nothing attack-specific is hardcoded here.
     this.onMessage("attack", (client, data) => {
       const attacker = this.players.get(client.sessionId);
       if (!attacker) return;
 
-      const attack = ATTACKS[data.attackId];
+      const attack = CHARACTERS[attacker.character]?.attacks?.[data.attackId];
       if (!attack) return;
 
       const now = Date.now();
@@ -54,8 +53,8 @@ class ArenaRoom extends HelloRoom {
   regenEnergy() {
     for (const client of this.clients) {
       const player = this.players.get(client.sessionId);
-      if (!player || player.energy >= MAX_ENERGY) continue;
-      player.energy = Math.min(MAX_ENERGY, player.energy + ENERGY_PER_TICK);
+      if (!player || player.energy >= player.maxEnergy) continue;
+      player.energy = Math.min(player.maxEnergy, player.energy + ENERGY_PER_TICK);
       client.send("energyUpdate", { energy: player.energy });
     }
   }
@@ -74,7 +73,7 @@ class ArenaRoom extends HelloRoom {
         target.hp -= attack.damage;
 
         if (target.hp <= 0) {
-          target.hp = MAX_HP;
+          target.hp = target.maxHp;
           target.x = SPAWN_X;
           target.y = SPAWN_Y;
           this.broadcast("playerRespawned", { sessionId, x: target.x, y: target.y, hp: target.hp });
@@ -88,8 +87,13 @@ class ArenaRoom extends HelloRoom {
   onJoin(client, options) {
     super.onJoin(client, options);
     const player = this.players.get(client.sessionId);
-    player.hp = MAX_HP;
-    player.energy = MAX_ENERGY;
+    // super.onJoin() already validated player.character against CHARACTERS,
+    // so this lookup is guaranteed to succeed.
+    const character = CHARACTERS[player.character];
+    player.maxHp = character.maxHp;
+    player.hp = character.maxHp;
+    player.maxEnergy = character.maxEnergy;
+    player.energy = character.maxEnergy;
     player.lastAttack = {};
     client.send("imroom", { roomtype: "arena" });
     client.send("energyUpdate", { energy: player.energy });
