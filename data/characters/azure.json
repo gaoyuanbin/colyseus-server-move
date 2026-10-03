@@ -29,6 +29,7 @@
       "height": 70,
       "cooldownMs": 3400,
       "energyCost": 30,
+      "statusEffect": { "type": "slow", "durationMs": 2000, "multiplier": 0.4 },
       "effect": {
         "width": 190,
         "height": 75,

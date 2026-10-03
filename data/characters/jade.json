@@ -29,6 +29,7 @@
       "height": 70,
       "cooldownMs": 3000,
       "energyCost": 25,
+      "selfStatusEffect": { "type": "regen", "durationMs": 2000, "tickMs": 500, "healPerTick": 3 },
       "effect": {
         "width": 150,
         "height": 70,
@@ -45,6 +46,7 @@
       "height": 50,
       "cooldownMs": 400,
       "energyCost": 0,
+      "statusEffect": { "type": "poison", "durationMs": 4000, "tickMs": 500, "damagePerTick": 2 },
       "effect": {
         "width": 50,
         "height": 50,

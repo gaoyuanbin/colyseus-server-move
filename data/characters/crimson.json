@@ -29,6 +29,7 @@
       "height": 60,
       "cooldownMs": 2600,
       "energyCost": 30,
+      "statusEffect": { "type": "stun", "durationMs": 1500 },
       "effect": {
         "width": 110,
         "height": 65,
