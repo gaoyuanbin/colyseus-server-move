@@ -1,0 +1,121 @@
+{
+  "id": "jolteon",
+  "name": "Jolteon",
+  "color": "0xe6be28",
+  "speed": 16,
+  "maxHp": 75,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 300,
+      "energyCost": 6,
+      "range": 70,
+      "height": 75,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 8
+        }
+      ],
+      "effect": {
+        "width": 45,
+        "height": 75,
+        "offsetFromPlayer": 35,
+        "color": "0xffe650",
+        "alpha": 0.6,
+        "durationMs": 133
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 917,
+      "energyCost": 22,
+      "range": 160,
+      "height": 148,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 20
+        }
+      ],
+      "effect": {
+        "width": 89,
+        "height": 148,
+        "offsetFromPlayer": 80,
+        "color": "0xffc814",
+        "alpha": 0.6,
+        "durationMs": 233
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 367,
+      "energyCost": 12,
+      "range": 65,
+      "height": 65,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 10
+        }
+      ],
+      "effect": {
+        "width": 39,
+        "height": 65,
+        "offsetFromPlayer": 33,
+        "color": "0xfff58c",
+        "alpha": 0.6,
+        "durationMs": 200
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 917,
+      "energyCost": 22,
+      "range": 260,
+      "height": 81,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 5
+        },
+        {
+          "type": "stun",
+          "durationMs": 1500
+        }
+      ],
+      "effect": {
+        "width": 49,
+        "height": 81,
+        "offsetFromPlayer": 130,
+        "color": "0xfff03c",
+        "alpha": 0.6,
+        "durationMs": 200
+      }
+    }
+  }
+}

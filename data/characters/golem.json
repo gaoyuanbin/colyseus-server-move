@@ -1,0 +1,121 @@
+{
+  "id": "golem",
+  "name": "Golem",
+  "color": "0x787878",
+  "speed": 7,
+  "maxHp": 140,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 500,
+      "energyCost": 10,
+      "range": 70,
+      "height": 90,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 20
+        }
+      ],
+      "effect": {
+        "width": 54,
+        "height": 90,
+        "offsetFromPlayer": 35,
+        "color": "0xc8c8c8",
+        "alpha": 0.6,
+        "durationMs": 167
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1500,
+      "energyCost": 25,
+      "range": 120,
+      "height": 184,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 40
+        }
+      ],
+      "effect": {
+        "width": 110,
+        "height": 184,
+        "offsetFromPlayer": 60,
+        "color": "0xa0a0a0",
+        "alpha": 0.6,
+        "durationMs": 333
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 583,
+      "energyCost": 15,
+      "range": 60,
+      "height": 69,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 15
+        }
+      ],
+      "effect": {
+        "width": 41,
+        "height": 69,
+        "offsetFromPlayer": 30,
+        "color": "0xdcdcdc",
+        "alpha": 0.6,
+        "durationMs": 267
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 1250,
+      "energyCost": 28,
+      "range": 85,
+      "height": 154,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 40
+        },
+        {
+          "type": "knockback",
+          "force": 60
+        }
+      ],
+      "effect": {
+        "width": 92,
+        "height": 154,
+        "offsetFromPlayer": 43,
+        "color": "0xb43cb4",
+        "alpha": 0.6,
+        "durationMs": 417
+      }
+    }
+  }
+}

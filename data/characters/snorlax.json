@@ -1,0 +1,125 @@
+{
+  "id": "snorlax",
+  "name": "Snorlax",
+  "color": "0x508250",
+  "speed": 4,
+  "maxHp": 220,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 667,
+      "energyCost": 10,
+      "range": 70,
+      "height": 99,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 22
+        }
+      ],
+      "effect": {
+        "width": 59,
+        "height": 99,
+        "offsetFromPlayer": 35,
+        "color": "0x64a064",
+        "alpha": 0.6,
+        "durationMs": 267
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1833,
+      "energyCost": 35,
+      "range": 110,
+      "height": 191,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 50
+        }
+      ],
+      "effect": {
+        "width": 115,
+        "height": 191,
+        "offsetFromPlayer": 55,
+        "color": "0x3c783c",
+        "alpha": 0.6,
+        "durationMs": 533
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 833,
+      "energyCost": 20,
+      "range": 65,
+      "height": 100,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 25
+        }
+      ],
+      "effect": {
+        "width": 60,
+        "height": 100,
+        "offsetFromPlayer": 33,
+        "color": "0x8cbe8c",
+        "alpha": 0.6,
+        "durationMs": 400
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 1333,
+      "energyCost": 25,
+      "range": 90,
+      "height": 169,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 30
+        },
+        {
+          "type": "knockback",
+          "force": 40
+        },
+        {
+          "type": "stun",
+          "durationMs": 1500
+        }
+      ],
+      "effect": {
+        "width": 101,
+        "height": 169,
+        "offsetFromPlayer": 45,
+        "color": "0xb4dc64",
+        "alpha": 0.6,
+        "durationMs": 500
+      }
+    }
+  }
+}

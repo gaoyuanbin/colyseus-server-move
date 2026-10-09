@@ -1,0 +1,125 @@
+{
+  "id": "mewtwo",
+  "name": "Mewtwo",
+  "color": "0xa064dc",
+  "speed": 11,
+  "maxHp": 95,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 333,
+      "energyCost": 8,
+      "range": 85,
+      "height": 98,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 14
+        }
+      ],
+      "effect": {
+        "width": 59,
+        "height": 98,
+        "offsetFromPlayer": 43,
+        "color": "0xc88cff",
+        "alpha": 0.6,
+        "durationMs": 150
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1167,
+      "energyCost": 28,
+      "range": 220,
+      "height": 283,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 30
+        }
+      ],
+      "effect": {
+        "width": 170,
+        "height": 283,
+        "offsetFromPlayer": 110,
+        "color": "0xa050f0",
+        "alpha": 0.6,
+        "durationMs": 300
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 467,
+      "energyCost": 14,
+      "range": 75,
+      "height": 81,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 12
+        }
+      ],
+      "effect": {
+        "width": 49,
+        "height": 81,
+        "offsetFromPlayer": 38,
+        "color": "0xdcb4ff",
+        "alpha": 0.6,
+        "durationMs": 233
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 1667,
+      "energyCost": 40,
+      "range": 320,
+      "height": 219,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 55
+        },
+        {
+          "type": "knockback",
+          "force": 50
+        },
+        {
+          "type": "recoil",
+          "amount": 20
+        }
+      ],
+      "effect": {
+        "width": 131,
+        "height": 219,
+        "offsetFromPlayer": 160,
+        "color": "0xb464ff",
+        "alpha": 0.6,
+        "durationMs": 467
+      }
+    }
+  }
+}

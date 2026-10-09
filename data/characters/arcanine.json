@@ -1,0 +1,121 @@
+{
+  "id": "arcanine",
+  "name": "Arcanine",
+  "color": "0xdcc896",
+  "speed": 10,
+  "maxHp": 100,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 417,
+      "energyCost": 10,
+      "range": 90,
+      "height": 156,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 10
+        }
+      ],
+      "effect": {
+        "width": 94,
+        "height": 156,
+        "offsetFromPlayer": 45,
+        "color": "0xffebb4",
+        "alpha": 0.6,
+        "durationMs": 167
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1083,
+      "energyCost": 25,
+      "range": 280,
+      "height": 396,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 22
+        }
+      ],
+      "effect": {
+        "width": 238,
+        "height": 396,
+        "offsetFromPlayer": 140,
+        "color": "0xffd278",
+        "alpha": 0.6,
+        "durationMs": 300
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 467,
+      "energyCost": 15,
+      "range": 80,
+      "height": 103,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 12
+        }
+      ],
+      "effect": {
+        "width": 62,
+        "height": 103,
+        "offsetFromPlayer": 40,
+        "color": "0xfff0d2",
+        "alpha": 0.6,
+        "durationMs": 300
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 917,
+      "energyCost": 22,
+      "range": 180,
+      "height": 123,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 20
+        },
+        {
+          "type": "knockback",
+          "force": 40
+        }
+      ],
+      "effect": {
+        "width": 74,
+        "height": 123,
+        "offsetFromPlayer": 90,
+        "color": "0xff5014",
+        "alpha": 0.6,
+        "durationMs": 300
+      }
+    }
+  }
+}

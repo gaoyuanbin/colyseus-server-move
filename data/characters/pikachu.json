@@ -1,0 +1,114 @@
+{
+  "id": "pikachu",
+  "name": "Pikachu",
+  "color": "0xc84646",
+  "speed": 13,
+  "maxHp": 80,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 300,
+      "energyCost": 5,
+      "range": 75,
+      "height": 75,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 10
+        }
+      ],
+      "effect": {
+        "width": 45,
+        "height": 75,
+        "offsetFromPlayer": 38,
+        "color": "0xff8c8c",
+        "alpha": 0.6,
+        "durationMs": 133
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 750,
+      "energyCost": 25,
+      "range": 300,
+      "height": 230,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 35
+        }
+      ],
+      "effect": {
+        "width": 138,
+        "height": 230,
+        "offsetFromPlayer": 150,
+        "color": "0xff5a5a",
+        "alpha": 0.6,
+        "durationMs": 267
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 333,
+      "energyCost": 15,
+      "range": 65,
+      "height": 75,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 10
+        }
+      ],
+      "effect": {
+        "width": 45,
+        "height": 75,
+        "offsetFromPlayer": 33,
+        "color": "0xffb4b4",
+        "alpha": 0.6,
+        "durationMs": 300
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 750,
+      "energyCost": 20,
+      "range": 0,
+      "height": 0,
+      "effects": [],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64ffc8",
+        "alpha": 0.6,
+        "durationMs": 133
+      },
+      "selfCast": true,
+      "blinkDistance": 150
+    }
+  }
+}

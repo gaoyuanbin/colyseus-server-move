@@ -1,0 +1,120 @@
+{
+  "id": "magikarp",
+  "name": "Magikarp",
+  "color": "0xff7f00",
+  "speed": 1,
+  "maxHp": 10,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 667,
+      "energyCost": 10,
+      "range": 20,
+      "height": 7,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 1
+        }
+      ],
+      "effect": {
+        "width": 24,
+        "height": 7,
+        "offsetFromPlayer": 10,
+        "color": "0xff961e",
+        "alpha": 0.6,
+        "durationMs": 233
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1667,
+      "energyCost": 30,
+      "range": 40,
+      "height": 34,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 10
+        }
+      ],
+      "effect": {
+        "width": 24,
+        "height": 34,
+        "offsetFromPlayer": 20,
+        "color": "0xe66400",
+        "alpha": 0.6,
+        "durationMs": 467
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 833,
+      "energyCost": 18,
+      "range": 20,
+      "height": 14,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 3
+        }
+      ],
+      "effect": {
+        "width": 24,
+        "height": 14,
+        "offsetFromPlayer": 10,
+        "color": "0xffc800",
+        "alpha": 0.6,
+        "durationMs": 367
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 1500,
+      "energyCost": 30,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "regen",
+          "durationMs": 2000,
+          "tickMs": 500,
+          "healPerTick": 3
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64ffb4",
+        "alpha": 0.6,
+        "durationMs": 333
+      },
+      "selfCast": true
+    }
+  }
+}

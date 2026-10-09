@@ -1,0 +1,135 @@
+{
+  "id": "gengar",
+  "name": "Gengar",
+  "color": "0x6432a0",
+  "speed": 11,
+  "maxHp": 90,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 367,
+      "energyCost": 8,
+      "range": 75,
+      "height": 106,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 8
+        },
+        {
+          "type": "poison",
+          "durationMs": 1500,
+          "tickMs": 500,
+          "damagePerTick": 1
+        }
+      ],
+      "effect": {
+        "width": 64,
+        "height": 106,
+        "offsetFromPlayer": 38,
+        "color": "0xa050e6",
+        "alpha": 0.6,
+        "durationMs": 167
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1333,
+      "energyCost": 28,
+      "range": 200,
+      "height": 283,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 15
+        },
+        {
+          "type": "poison",
+          "durationMs": 5000,
+          "tickMs": 500,
+          "damagePerTick": 2
+        }
+      ],
+      "effect": {
+        "width": 170,
+        "height": 283,
+        "offsetFromPlayer": 100,
+        "color": "0x6e28b4",
+        "alpha": 0.6,
+        "durationMs": 367
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 500,
+      "energyCost": 12,
+      "range": 70,
+      "height": 85,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 10
+        }
+      ],
+      "effect": {
+        "width": 51,
+        "height": 85,
+        "offsetFromPlayer": 35,
+        "color": "0xbe78ff",
+        "alpha": 0.6,
+        "durationMs": 267
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 1167,
+      "energyCost": 20,
+      "range": 130,
+      "height": 130,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 8
+        },
+        {
+          "type": "poison",
+          "durationMs": 4000,
+          "tickMs": 500,
+          "damagePerTick": 2
+        }
+      ],
+      "effect": {
+        "width": 78,
+        "height": 130,
+        "offsetFromPlayer": 65,
+        "color": "0x823cc8",
+        "alpha": 0.6,
+        "durationMs": 500
+      }
+    }
+  }
+}

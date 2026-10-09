@@ -1,0 +1,127 @@
+{
+  "id": "blastoise",
+  "name": "Blastoise",
+  "color": "0x3c82c8",
+  "speed": 7,
+  "maxHp": 130,
+  "maxEnergy": 100,
+  "attacks": {
+    "attack": {
+      "id": "attack",
+      "cooldownMs": 467,
+      "energyCost": 8,
+      "range": 80,
+      "height": 74,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 12
+        }
+      ],
+      "effect": {
+        "width": 44,
+        "height": 74,
+        "offsetFromPlayer": 40,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 167
+      }
+    },
+    "superAttack": {
+      "id": "superAttack",
+      "cooldownMs": 1250,
+      "energyCost": 25,
+      "range": 180,
+      "height": 152,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 28
+        }
+      ],
+      "effect": {
+        "width": 91,
+        "height": 152,
+        "offsetFromPlayer": 90,
+        "color": "0x3296e6",
+        "alpha": 0.6,
+        "durationMs": 333
+      }
+    },
+    "dash": {
+      "id": "dash",
+      "cooldownMs": 583,
+      "energyCost": 15,
+      "range": 70,
+      "height": 70,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 14
+        }
+      ],
+      "effect": {
+        "width": 42,
+        "height": 70,
+        "offsetFromPlayer": 35,
+        "color": "0x8cdcff",
+        "alpha": 0.6,
+        "durationMs": 300
+      }
+    },
+    "block": {
+      "id": "block",
+      "cooldownMs": 1000,
+      "energyCost": 15,
+      "range": 0,
+      "height": 0,
+      "effects": [
+        {
+          "type": "block",
+          "reduction": 0.5,
+          "durationMs": 667
+        }
+      ],
+      "effect": {
+        "width": 40,
+        "height": 40,
+        "offsetFromPlayer": 0,
+        "color": "0x64c8ff",
+        "alpha": 0.6,
+        "durationMs": 667
+      },
+      "selfCast": true
+    },
+    "special": {
+      "id": "special",
+      "cooldownMs": 1083,
+      "energyCost": 25,
+      "range": 350,
+      "height": 134,
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 28
+        },
+        {
+          "type": "knockback",
+          "force": 80
+        },
+        {
+          "type": "slow",
+          "multiplier": 0.4,
+          "durationMs": 2000,
+          "tickMs": 100
+        }
+      ],
+      "effect": {
+        "width": 80,
+        "height": 134,
+        "offsetFromPlayer": 175,
+        "color": "0x50b4ff",
+        "alpha": 0.6,
+        "durationMs": 367
+      }
+    }
+  }
+}
