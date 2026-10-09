@@ -22,7 +22,10 @@ const ENERGY_PER_TICK = ENERGY_REGEN_PER_SEC * (ENERGY_TICK_MS / 1000);
 // doesn't validate); "poison" and "regen" tick hp here since that's the
 // authoritative value. A second application of the same type refreshes its
 // clock instead of stacking, unlike the original, which just appended freely.
-const STATUS_TICK_MS = 100;
+// Shares ENERGY_TICK_MS's cadence and simulation interval (see onCreate) -
+// colyseus's Room only keeps one simulation interval slot, so a second
+// setSimulationInterval() call replaces the first rather than adding to it.
+const STATUS_TICK_MS = ENERGY_TICK_MS;
 
 // Small server room: same as HelloRoom, but attacking is allowed.
 // Players create/join these individually, so many can run at once.
@@ -57,9 +60,13 @@ class ArenaRoom extends HelloRoom {
 
     // Energy is a private resource (only the owning client needs to see it),
     // so it's ticked server-side and pushed to each client individually
-    // rather than broadcast through room state.
-    this.setSimulationInterval(() => this.regenEnergy(), ENERGY_TICK_MS);
-    this.setSimulationInterval(() => this.tickStatusEffects(), STATUS_TICK_MS);
+    // rather than broadcast through room state. Both run off the same single
+    // simulation interval - see STATUS_TICK_MS's comment above for why a
+    // second setSimulationInterval() call can't just be added alongside this.
+    this.setSimulationInterval(() => {
+      this.regenEnergy();
+      this.tickStatusEffects();
+    }, ENERGY_TICK_MS);
   }
 
   spendEnergy(client, player, cost) {
